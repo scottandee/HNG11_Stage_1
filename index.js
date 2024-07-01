@@ -35,17 +35,18 @@ app.get('/api/hello/', async (req, res) => {
     .then(response => response.json())
     .then(response => {
       console.log(response)
-      temperature = response.main.temp;
+      kelvinTemp = response.main.temp;
     })
     .catch(err => {
       console.error(err);
       res.status(404).send('Temperature cannot be retreived at this time');
     });
 
+  celsiusTemp = temperature - 273;
   res.send({
     clientIp: requesterIp,
     location,
-    message: `Hello, ${name}!, the temperature is ${temperature - 273.15} degrees Celsius in ${location}`
+    message: `Hello, ${name}!, the temperature is ${Math.round(celsiusTemp)} degrees Celsius in ${location}`
   });
 })
 

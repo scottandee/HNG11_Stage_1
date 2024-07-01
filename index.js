@@ -14,9 +14,9 @@ app.get('/api/hello/', async (req, res) => {
 
   // Retreive City with IP address
   const geoApiKey = process.env.GEOLOCATION_API_KEY;
-  const url = `https://ipgeolocation.abstractapi.com/v1/?api_key=${geoApiKey}&ip_address=${requesterIp}`;
+  const geoUrl = `https://ipgeolocation.abstractapi.com/v1/?api_key=${geoApiKey}&ip_address=${requesterIp}`;
   let location = '';
-  await fetch(url)
+  await fetch(geoUrl)
     .then(response => response.json())
     .then(response => {
       location = response.city;
@@ -31,7 +31,7 @@ app.get('/api/hello/', async (req, res) => {
   let temperature = 0;
   const weatherApiKey = process.env.OPEN_WEATHER_API_kEY;
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${weatherApiKey}`;
-  await fetch(url)
+  await fetch(weatherUrl)
     .then(response => response.json())
     .then(response => {
       console.log(response)

@@ -24,7 +24,7 @@ app.get('/api/hello/', async (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(404).send('City not found')
+      res.status(404).send('City not found');
     });
 
   // Retreive temperature with city
@@ -34,6 +34,7 @@ app.get('/api/hello/', async (req, res) => {
   await fetch(url)
     .then(response => response.json())
     .then(response => {
+      console.log(response)
       temperature = response.main.temp;
     })
     .catch(err => {

@@ -19,6 +19,7 @@ app.get('/api/hello/', async (req, res) => {
     .then(response => response.json())
     .then(response => {
       location = response.city;
+      console.log(location)
     })
     .catch(err => {
       console.error(err);

@@ -10,6 +10,7 @@ app.use(requestIp.mw());
 app.get('/api/hello/', async (req, res) => {
   const name = req.query.visitor_name.replace(/['"]/g, '');
   const requesterIp = req.clientIp;
+  console.log(requesterIp)
 
   // Retreive City with IP address
   const geoApiKey = process.env.GEOLOCATION_API_KEY;

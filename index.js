@@ -36,7 +36,7 @@ app.get('/api/hello/', async (req, res) => {
       return res.status(500).send('Temperature could not be retreived');
     }
 
-    const weatherData = weatherResponse.json();
+    const weatherData = await weatherResponse.json();
     console.log(weatherData);
     const kelvinTemp = weatherData.main.temp;
     const celsiusTemp = kelvinTemp - 273.15;

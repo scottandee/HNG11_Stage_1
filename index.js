@@ -42,7 +42,7 @@ app.get('/api/hello/', async (req, res) => {
     const celsiusTemp = kelvinTemp - 273.15;
     console.log(`Temperature: ${celsiusTemp}`);
     res.send({
-      clientIp: requesterIp,
+      client_ip: requesterIp,
       location,
       message: `Hello, ${name}!, the temperature is ${Math.round(celsiusTemp)} degrees Celsius in ${location}`
     });

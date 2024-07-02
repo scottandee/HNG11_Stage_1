@@ -9,7 +9,7 @@ app.use(requestIp.mw());
 
 app.get('/api/hello/', async (req, res) => {
   const name = req.query.visitor_name ? req.query.visitor_name.replace(/['"]/g, '') : 'Visitor';
-  const requesterIp = req.clientIp;
+  const requesterIp = '84.17.50.161';
   console.log(`Client IP: ${requesterIp}`);
 
   try {
@@ -19,7 +19,7 @@ app.get('/api/hello/', async (req, res) => {
     }
     const geoUrl = `https://ipgeolocation.abstractapi.com/v1/?api_key=${geoApiKey}&ip_address=${requesterIp}`;
     const geoResponse = await fetch(geoUrl);
-    if (!geoResponse.okay) {
+    if (!geoResponse.ok) {
       return res.status(404).send('City not found');
     }
     const geoData = await geoResponse.json();
@@ -32,7 +32,7 @@ app.get('/api/hello/', async (req, res) => {
     }
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${weatherApiKey}`;
     const weatherResponse = await fetch(weatherUrl);
-    if (!weatherResponse.okay) {
+    if (!weatherResponse.ok) {
       return res.status(500).send('Temperature could not be retreived');
     }
 

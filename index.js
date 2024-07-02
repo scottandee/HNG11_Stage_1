@@ -37,6 +37,7 @@ app.get('/api/hello/', async (req, res) => {
     }
 
     const weatherData = weatherResponse.json();
+    console.log(weatherData);
     const kelvinTemp = weatherData.main.temp;
     const celsiusTemp = kelvinTemp - 273.15;
     console.log(`Temperature: ${celsiusTemp}`);

@@ -33,7 +33,7 @@ app.get('/api/hello/', async (req, res) => {
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${weatherApiKey}`;
     const weatherResponse = await fetch(weatherUrl);
     if (!weatherResponse.ok) {
-      return res.status(500).send('Temperature could not be retreived');
+      return res.status(500).send(`Temperature for ${location} could not be retreived`);
     }
 
     const weatherData = await weatherResponse.json();

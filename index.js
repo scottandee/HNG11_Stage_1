@@ -9,7 +9,7 @@ app.use(requestIp.mw());
 
 app.get('/api/hello/', async (req, res) => {
   const name = req.query.visitor_name ? req.query.visitor_name.replace(/['"]/g, '') : 'Visitor';
-  const requesterIp = '84.17.50.161';
+  const requesterIp = req.clientIp;
   console.log(`Client IP: ${requesterIp}`);
 
   try {
